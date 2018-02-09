@@ -3,17 +3,30 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "autoprefixer": "^7.2.5",
     "axios": "^0.17.1",
+    "chokidar-cli": "^1.2.0",
+    "node-sass-chokidar": "^0.0.3",
+    "npm-run-all": "^4.1.2",
+    "postcss-cli": "^5.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
     "react-scripts": "1.1.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-css:scss-compile": "node-sass-chokidar --source-map true src/sass/style.sass -o src/",
+    "build-css:autoprefixer": "postcss src/*.css --use autoprefixer -d src/",
+    "watch-css": "npm-run-all build-css:*",
+    "sass:watch": "chokidar \"src/sass/\" -c \"npm run watch-css\"",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p sass:watch start-js",
+    "build-js": "react-scripts build",
+    "build": "npm-run-all build-css:* build-js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

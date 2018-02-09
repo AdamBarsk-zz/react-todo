@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import axios from 'axios'
 
 class App extends Component {
@@ -34,4 +35,12 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state){
+	return {state}
+}
+
+function mapDispatchToProps(dispatch) {
+	return { dispatch }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
