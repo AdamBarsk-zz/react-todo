@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Todo = props => (
   <div className="todo-item">
     <div className="todo-task-container">
-      <i className="fal fa-tasks" />
+      <i className="fal fa-angle-double-right" />
       <h6>{props.task}</h6>
     </div>
     <div className="todo-action-container">

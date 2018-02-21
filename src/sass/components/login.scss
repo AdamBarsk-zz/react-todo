@@ -1,0 +1,15 @@
+@import "../variables/_colors";
+
+.login-container {
+	display: flex;
+	flex: 1 1;
+	width: 100vw;
+	height: auto;
+	justify-content: center;
+	align-items: center;
+		
+	button {
+		height: 20px;
+		width: 200px;
+	}
+}

@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 const Input = props => (
   <div className="header-item">
     <form action="" onSubmit={(e) => { e.preventDefault(); props.submitTodo(); }}>
+      <span>
+        <i className="fal fa-pencil" />
+      </span>
       <input type="text" value={props.todo.input} onChange={props.todoInputChanged} />
     </form>
   </div>

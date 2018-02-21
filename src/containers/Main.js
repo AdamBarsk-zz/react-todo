@@ -32,10 +32,8 @@ class Main extends Component {
 
   render() {
     return (
-      <div className="main-container">
-        <div className="todo-container">
-          {this.props.todo.todos ? this.renderTodos() : 'Loading'}
-        </div>
+      <div className="todo-container">
+        {this.props.todo.todos ? this.renderTodos() : 'Loading'}
       </div>
     );
   }

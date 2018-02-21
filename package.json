@@ -21,7 +21,7 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "build-css:scss-compile": "node-sass-chokidar --source-map true src/sass/style.sass -o src/",
+    "build-css:scss-compile": "node-sass-chokidar --source-map true src/sass/style.scss -o src/",
     "build-css:autoprefixer": "postcss src/*.css --use autoprefixer -d src/",
     "watch-css": "npm-run-all build-css:*",
     "sass:watch": "chokidar \"src/sass/\" -c \"npm run watch-css\"",
