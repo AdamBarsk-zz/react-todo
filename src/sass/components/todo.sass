@@ -1,0 +1,64 @@
+.todo-container
+	display: flex
+	flex-flow: column nowrap
+	align-items: center
+	justify-content: flex-start
+	width: 70%
+	height: 70%
+	overflow-y: auto
+	padding: 5%
+
+.todo-item
+	position: relative
+	background: honeydew
+	border: 1px solid grey
+	box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3)
+	width: 200px
+	height: 100px
+	margin: 5px
+
+	.todo-task-container
+		display: flex
+		justify-content: flex-start
+		width: 100%
+		padding: 0 10px
+		padding-top: 5px
+		overflow-y: auto
+		max-height: 62px
+
+		h6
+			margin: 0 0 0 5px
+			font-size: 1em
+			color: rgba(0, 0, 0, 0.7)
+	
+	.todo-action-container
+		display: flex
+		align-items: center
+		justify-content: flex-end
+		width: 100%
+		position: absolute
+		bottom: 0
+
+		.done
+			color: limegreen
+
+		.check:hover
+			color: orange
+
+		.delete:hover
+			color: red
+
+		button
+			border: none
+			background-image: none
+			background-color: transparent
+			-webkit-box-shadow: none
+			-moz-box-shadow: none
+			box-shadow: none
+			padding: 0
+			margin: 0 5px
+			color: rgba(0, 0, 0, 0.2)
+		
+		button:focus
+			outline: 0
+			

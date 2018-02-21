@@ -35,7 +35,6 @@ export function logoutRequest() {
     fireAuth.signOut()
       .then(() => {
         dispatch({ type: LOGOUT_SUCCESS });
-        // dispatch(push('/login'));
       })
       .catch(() => {
         dispatch({ type: LOGOUT_FAILURE });

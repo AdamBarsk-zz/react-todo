@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import * as authActions from '../actions/auth';
 
-import LoginForm from '../components/LoginForm';
+import LoginButton from '../components/LoginButton';
 
 class Login extends Component {
   loginAttempt = () => {
@@ -13,10 +13,14 @@ class Login extends Component {
 
   render() {
     return (
-      <LoginForm loginAttempt={this.loginAttempt} />
+      <LoginButton loginAttempt={this.loginAttempt} />
     );
   }
 }
+
+Login.propTypes = {
+  loginRequest: PropTypes.func.isRequired,
+};
 
 function mapStateToProps(state) {
   return { state };
@@ -27,7 +31,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
-
-Login.propTypes = {
-  loginRequest: PropTypes.func.isRequired,
-};

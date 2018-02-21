@@ -1,29 +1,33 @@
 import * as authActions from '../actions/auth';
+import { updateObject } from '../helpers/functions';
 
-const initialState = {};
-
-function updateObject(oldObject, newValues) {
-  return Object.assign({}, oldObject, newValues);
-}
+const initialState = {
+  loggingIn: false,
+  loggedIn: false,
+  loggingOut: false,
+  user: {},
+};
 
 const auth = (state = initialState, action) => {
   switch (action.type) {
     case authActions.LOGIN_REQUEST:
-      return {
+      return updateObject(state, {
         loggingIn: true,
-        user: action.user,
-      };
+      });
     case authActions.LOGIN_SUCCESS:
-      return {
+      return updateObject(state, {
+        loggingIn: false,
         loggedIn: true,
         user: action.user,
-      };
+      });
     case authActions.LOGIN_FAILURE:
-      return {};
+      return initialState;
     case authActions.LOGOUT_REQUEST:
-      return updateObject(state, { loggingOut: true });
+      return updateObject(state, {
+        loggingOut: true,
+      });
     case authActions.LOGOUT_SUCCESS:
-      return {};
+      return initialState;
     case authActions.LOGOUT_FAILURE:
       return state;
     default:
