@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 const Logo = props => (
   <div className="header-item">
-    <h6>{props.name ? props.name : 'Not signed in.'}</h6>
+    {props.photoURL ? <img src={props.photoURL} alt="profile" /> : <h6>task-list</h6>}
   </div>
 );
 
 Logo.propTypes = {
-  name: PropTypes.string,
+  photoURL: PropTypes.string,
 };
 
 export default Logo;

@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Todo = props => (
-  <div className="todo-item">
-    <div className="todo-task-container">
+const task = props => (
+  <div className="task-item">
+    <div className="task-text-container">
       <i className="fal fa-angle-double-right" />
       <h6>{props.task}</h6>
     </div>
-    <div className="todo-action-container">
+    <div className="task-action-container">
       <button
         className={props.done ? 'check done fa-2x' : 'check fa-2x'}
         onClick={() => props.handleDoneClick(props.id, props.done)}
@@ -24,7 +24,7 @@ const Todo = props => (
   </div>
 );
 
-Todo.propTypes = {
+task.propTypes = {
   handleDeleteClick: PropTypes.func.isRequired,
   handleDoneClick: PropTypes.func.isRequired,
   task: PropTypes.string.isRequired,
@@ -32,4 +32,4 @@ Todo.propTypes = {
   id: PropTypes.string.isRequired,
 };
 
-export default Todo;
+export default task;

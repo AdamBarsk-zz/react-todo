@@ -1,5 +1,6 @@
 import { push } from 'react-router-redux';
 import { fireAuth, authProvider } from '../firebase/config';
+import { showToast } from './toast';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -19,11 +20,12 @@ export function loginRequest() {
           type: LOGIN_SUCCESS,
           user: response.user,
         });
-
+        dispatch(showToast(`Welcome ${response.user.displayName}.`, 'success'));
         dispatch(push('/'));
       })
       .catch(() => {
         dispatch({ type: LOGIN_FAILURE });
+        dispatch(showToast('Authentication failed.', 'error'));
       });
   };
 }
@@ -35,9 +37,11 @@ export function logoutRequest() {
     fireAuth.signOut()
       .then(() => {
         dispatch({ type: LOGOUT_SUCCESS });
+        dispatch(showToast('Take care.', 'success'));
       })
       .catch(() => {
         dispatch({ type: LOGOUT_FAILURE });
+        dispatch(showToast('Logout failed.', 'error'));
       });
   };
 }

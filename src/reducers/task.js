@@ -1,31 +1,31 @@
-import * as todoActions from '../actions/todo';
+import * as taskActions from '../actions/task';
 import { updateObject } from '../helpers/functions';
 
 const initialState = {
   input: '',
   loading: false,
-  todos: [],
+  tasks: [],
   failure: false,
 };
 
-const todo = (state = initialState, action) => {
+const task = (state = initialState, action) => {
   switch (action.type) {
-    case todoActions.LOAD_TODOS:
+    case taskActions.LOAD_TASKS:
       return updateObject(state, { loading: true });
-    case todoActions.LOAD_TODOS_SUCCESS:
+    case taskActions.LOAD_TASKS_SUCCESS:
       return updateObject(state, {
-        todos: action.todos,
+        tasks: action.tasks,
         loading: false,
       });
-    case todoActions.LOAD_TODOS_FAILURE:
+    case taskActions.LOAD_TASKS_FAILURE:
       return updateObject(state, { failure: true });
-    case todoActions.POST_TODO_SUCCESS:
+    case taskActions.POST_TASK_SUCCESS:
       return updateObject(state, { input: '' });
-    case todoActions.TODO_INPUT:
+    case taskActions.TASK_INPUT:
       return updateObject(state, { input: action.input });
     default:
       return state;
   }
 };
 
-export default todo;
+export default task;

@@ -13,17 +13,18 @@ class Login extends Component {
 
   render() {
     return (
-      <LoginButton loginAttempt={this.loginAttempt} />
+      <LoginButton loginAttempt={this.loginAttempt} auth={this.props.auth} />
     );
   }
 }
 
 Login.propTypes = {
   loginRequest: PropTypes.func.isRequired,
+  auth: PropTypes.object,
 };
 
 function mapStateToProps(state) {
-  return { state };
+  return { auth: state.app.auth };
 }
 
 function mapDispatchToProps(dispatch) {

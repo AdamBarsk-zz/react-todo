@@ -1,7 +1,9 @@
 @import "components/login.scss";
 @import "components/app.scss";
-@import "components/todo.scss";
+@import "components/task.scss";
 @import "components/header.scss";
+@import "components/spinner.scss";
+@import "components/toast.scss";
 @import "variables/_font.scss";
 
 body, html {
@@ -12,4 +14,15 @@ body, html {
 
 * {
 	box-sizing: border-box;
+}
+button {
+	border: none;
+	background-image: none;
+	background-color: transparent;
+	box-shadow: none;
+	padding: 0;
+}
+
+button:focus {
+	outline: 0;
 }

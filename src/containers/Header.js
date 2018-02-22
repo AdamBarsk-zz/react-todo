@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import * as todoActions from '../actions/todo';
+import * as taskActions from '../actions/task';
 import * as authActions from '../actions/auth';
 import Logo from '../components/Logo';
 import Input from '../components/Input';
@@ -13,12 +13,12 @@ class Header extends Component {
     this.props.logoutRequest();
   }
 
-  submitTodo = () => {
-    this.props.postTodo(this.props.todo.input, this.props.auth.user.uid);
+  submitTask = () => {
+    this.props.postTask(this.props.task.input, this.props.auth.user.uid);
   }
 
-  todoInputChanged = (e) => {
-    this.props.todoInput(e.target.value);
+  taskInputChanged = (e) => {
+    this.props.taskInput(e.target.value);
   }
 
   renderHeaderContent() {
@@ -26,9 +26,9 @@ class Header extends Component {
       return (
         <Fragment>
           <Input
-            submitTodo={this.submitTodo}
-            todo={this.props.todo}
-            todoInputChanged={this.todoInputChanged}
+            submitTask={this.submitTask}
+            task={this.props.task}
+            taskInputChanged={this.taskInputChanged}
           />
           <LogoutButton
             logoutAttempt={this.logoutAttempt}
@@ -41,7 +41,7 @@ class Header extends Component {
   render() {
     return (
       <div className="header-container">
-        <Logo name={this.props.auth.user.displayName} />
+        <Logo photoURL={this.props.auth.user.photoURL} />
         {this.renderHeaderContent()}
       </div>
     );
@@ -50,18 +50,18 @@ class Header extends Component {
 
 Header.propTypes = {
   logoutRequest: PropTypes.func.isRequired,
-  postTodo: PropTypes.func.isRequired,
-  todoInput: PropTypes.func.isRequired,
-  todo: PropTypes.object.isRequired,
+  postTask: PropTypes.func.isRequired,
+  taskInput: PropTypes.func.isRequired,
+  task: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state) {
-  return { auth: state.app.auth, todo: state.app.todo };
+  return { auth: state.app.auth, task: state.app.task };
 }
 
 function mapDispatchToProps(dispatch) {
-  return { dispatch, ...bindActionCreators({ ...todoActions, ...authActions }, dispatch) };
+  return { dispatch, ...bindActionCreators({ ...taskActions, ...authActions }, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

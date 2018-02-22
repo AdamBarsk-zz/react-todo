@@ -8,6 +8,7 @@ import Main from './Main';
 import ConnectedSwitch from './ConnectedSwitch';
 import PrivateRoute from './PrivateRoute';
 import Header from './Header';
+import Toast from '../components/Toast';
 
 class App extends Component {
   componentDidMount() {
@@ -18,6 +19,7 @@ class App extends Component {
     return (
       <div className="app-container">
         <Header />
+        <Toast toast={this.props.toast} />
         <ConnectedSwitch>
           <Route exact path="/login" component={Login} />
           <PrivateRoute authed={this.props.auth.loggedIn} exact path="/" component={Main} />
@@ -29,11 +31,12 @@ class App extends Component {
 
 App.propTypes = {
   auth: PropTypes.object.isRequired,
+  toast: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
-  return { auth: state.app.auth, router: state.router };
+  return { auth: state.app.auth, toast: state.app.toast, router: state.router };
 }
 
 function mapDispatchToProps(dispatch) {

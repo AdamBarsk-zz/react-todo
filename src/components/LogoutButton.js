@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 const LogoutButton = props => (
   <div className="header-item">
-    <button onClick={(e) => { e.preventDefault(); props.logoutAttempt(); }}>Leave</button>
+    <button onClick={(e) => { e.preventDefault(); props.logoutAttempt(); }}>
+      <i className="fal fa-sign-out" />
+    </button>
   </div>
 );
 

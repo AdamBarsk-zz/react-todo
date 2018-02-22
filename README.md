@@ -1,3 +1,3 @@
-Todolist build with:
+Tasklist build with:
 
 React - Redux - Router - Firebase

@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 import auth from './auth';
-import todo from './todo';
+import task from './task';
+import toast from './toast';
 
 
 const appReducer = combineReducers({
   auth,
-  todo,
+  task,
+  toast,
 });
 
 const rootReducer = (state, action) => {
