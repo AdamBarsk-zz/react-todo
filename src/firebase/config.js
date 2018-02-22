@@ -1,12 +1,12 @@
 import firebase from 'firebase';
 
 const config = {
-  apiKey: 'AIzaSyDtdHykWwcjMur8Axh8YN8rvkKFB9uR8Z0',
-  authDomain: 'todolist-ee4b6.firebaseapp.com',
-  databaseURL: 'https://todolist-ee4b6.firebaseio.com',
-  projectId: 'todolist-ee4b6',
-  storageBucket: 'todolist-ee4b6.appspot.com',
-  messagingSenderId: '563235595970',
+  apiKey: 'AIzaSyAKh6pFF90SFJ_1_Rb5zmOO-XSTkDqsaGI',
+  authDomain: 'tasklist-90401.firebaseapp.com',
+  databaseURL: 'https://tasklist-90401.firebaseio.com',
+  projectId: 'tasklist-90401',
+  storageBucket: 'tasklist-90401.appspot.com',
+  messagingSenderId: '472745352982',
 };
 
 const fire = firebase.initializeApp(config);
