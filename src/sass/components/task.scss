@@ -8,7 +8,13 @@
 	max-height: 100%;
 	overflow-y: auto;
 	background: $main;
-	padding: 5%;
+	padding: 28px;
+
+	@media screen and (min-width: 420px) {
+		flex-flow: row wrap;
+		justify-content: center;
+		align-items: flex-start;
+	}
 }
 
 .task-item {
