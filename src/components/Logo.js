@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Logo = props => (
   <div className="header-item">
-    {props.photoURL ? <img src={props.photoURL} alt="profile" /> : <h6>task-list</h6>}
+    {props.photoURL ? <img src={props.photoURL} alt="profile" /> : <h6>Tasklist</h6>}
   </div>
 );
 
