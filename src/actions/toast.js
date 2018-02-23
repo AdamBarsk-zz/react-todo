@@ -15,6 +15,6 @@ export function showToast(value, archetype) {
       archetype,
       value,
     });
-    setTimeout(() => dispatch(hideToast()), 3000);
+    setTimeout(() => dispatch(hideToast()), 2500);
   };
 }

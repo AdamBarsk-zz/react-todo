@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import * as taskActions from '../actions/task';
 import * as authActions from '../actions/auth';
+import * as toastActions from '../actions/toast';
 import Logo from '../components/Logo';
 import Input from '../components/Input';
 import LogoutButton from '../components/LogoutButton';
@@ -14,7 +15,11 @@ class Header extends Component {
   }
 
   submitTask = () => {
-    this.props.postTask(this.props.task.input, this.props.auth.user.uid);
+    this.props.task.input !== ''
+      ?
+      this.props.postTask(this.props.task.input, this.props.auth.user.uid)
+      :
+      this.props.showToast('No empty tasks', 'error');
   }
 
   taskInputChanged = (e) => {
@@ -61,7 +66,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return { dispatch, ...bindActionCreators({ ...taskActions, ...authActions }, dispatch) };
+  return { dispatch, ...bindActionCreators({ ...taskActions, ...authActions, ...toastActions }, dispatch) };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
