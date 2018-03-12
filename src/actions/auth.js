@@ -45,3 +45,23 @@ export function logoutRequest() {
       });
   };
 }
+
+export function anonymousRequest() {
+  return (dispatch) => {
+    dispatch({ type: LOGIN_REQUEST });
+
+    fireAuth.signInAnonymously()
+      .then((user) => {
+        dispatch({
+          type: LOGIN_SUCCESS,
+          user,
+        });
+        dispatch(showToast('Welcome.', 'success'));
+        dispatch(push('/'));
+      })
+      .catch(() => {
+        dispatch({ type: LOGIN_FAILURE });
+        dispatch(showToast('Authentication failed.', 'error'));
+      });
+  };
+}

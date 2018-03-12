@@ -1,19 +1,31 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import * as authActions from '../actions/auth';
 
 import LoginButton from '../components/LoginButton';
+import Spinner from '../components/Spinner';
+
 
 class Login extends Component {
-  loginAttempt = () => {
-    this.props.loginRequest();
+  loginAttempt = (type) => {
+    type === 'google' ? this.props.loginRequest() : this.props.anonymousRequest();
   }
 
   render() {
     return (
-      <LoginButton loginAttempt={this.loginAttempt} auth={this.props.auth} />
+      <div className="login-container">
+        {this.props.auth.loggingIn
+        ?
+          <Spinner />
+        :
+          <Fragment>
+            <LoginButton loginAttempt={this.loginAttempt} text="Sign in with Google" type="google" />
+            <LoginButton loginAttempt={this.loginAttempt} text="Test it out Anonymously" type="anonymously" />
+          </Fragment>
+      }
+      </div>
     );
   }
 }
